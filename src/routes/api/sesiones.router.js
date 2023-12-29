@@ -17,12 +17,6 @@ sesionesRouter.post("/", async (req, res) => {
       message: "login failed",
     });
   }
-  // if(password !== usuario.password){
-  //   return res.status(401).json({
-  //     status: "error",
-  //     message: "login failed",
-  //   });
-  // }
   if(!isValidPassword(password, usuario.password)){
     return res.status(401).json({
       status: "error",
@@ -34,6 +28,7 @@ sesionesRouter.post("/", async (req, res) => {
     nombre: usuario.nombre,
     apellido: usuario.apellido,
     email: usuario.email,
+    edad: usuario.edad,
   };
 
   if (usuario.email === ADMIN_EMAIL && usuario.password === ADMIN_PASSWORD) {

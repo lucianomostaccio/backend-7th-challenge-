@@ -56,3 +56,13 @@ webRouter.get('/products', onlyLogueadosWeb, (req, res) => {
     products,
   });
 });
+
+webRouter.get('/resetpass', (req, res) => {
+  // Solo mostrar la vista de registro si el usuario no está logueado
+  if (!req.session['user']) {
+    res.render('resetpass.handlebars', { pageTitle: 'Reset password' });
+  } else {
+    // Redirigir al usuario a la vista de productos si ya está logueado
+    res.redirect('/products');
+  }
+});
