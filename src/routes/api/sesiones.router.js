@@ -7,17 +7,19 @@ import { isValidPassword } from "../../utils/hashing.js";
 
 export const sesionesRouter = Router();
 
-
 sesionesRouter.post("/", async (req, res) => {
-  const password = req.body;
-  const usuario = await usuariosManager.findOne(req.body);
+  const password = req.body.password;
+  const usuario = await usuariosManager.findOne({ email: req.body.email });
+
+  //console.log(usuario, password) for debugging only
+
   if (!usuario) {
     return res.status(401).json({
       status: "error",
       message: "login failed",
     });
   }
-  if(!isValidPassword(password, usuario.password)){
+  if (!isValidPassword(password, usuario.password)) {
     return res.status(401).json({
       status: "error",
       message: "login failed",
