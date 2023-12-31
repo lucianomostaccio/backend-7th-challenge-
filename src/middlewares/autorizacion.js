@@ -4,7 +4,7 @@ export function onlyLogueadosRest(req, res, next) {
       .status(403)
       .json({
         status: 'error',
-        message: 'no tenes permiso para ver esto. solo para usuarios logueados!'
+        message: 'no tenes permiso para ver esto. solo para usuarios logueados'
       })
   }
   next()
