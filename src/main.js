@@ -13,6 +13,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import passport from "passport";
 import initializePassport from "./config/passport.config.js";
+import initializeGithubPassport from "./config/githubpassport.config.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,6 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "static"))); //specify static folder
 app.use(sessions);
 initializePassport();
+initializeGithubPassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
