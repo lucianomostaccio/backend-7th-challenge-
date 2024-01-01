@@ -14,12 +14,15 @@ const initializePassport = () => {
           const user = await usersManager.findOne({ email: username });
           // Log statements for debugging
           console.log("Entered Password:", password);
-          console.log(user)
+          console.log(user);
           if (!user) {
             console.log("User does not exist");
             return done(null, false);
           }
-          if (!isValidPassword(password, user.password)) return done(null, false);
+          if (!isValidPassword(password, user.password)) {
+            console.log("Invalid Password");
+            return done(null, false);
+          }
           return done(null, user);
         } catch (error) {
           return done(error);
