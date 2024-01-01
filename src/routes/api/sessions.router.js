@@ -47,8 +47,8 @@ export const sessionsRouter = Router();
 //   });
 // });
 
-sessionsRouter.post("/", passport.authenticate('login',{failureRedirect:'/faillogin'}), async (req, res) => {
-  if(!req.user) return res.status(400).json({status:"error", message:"invalid credentials"});
+sessionsRouter.post("/", passport.authenticate('login'), async (req, res) => {
+  if(!req.user) return res.status(401).json({status:"error"});
   // @ts-ignore
   req.session["user"]= {
     // @ts-ignore
@@ -66,13 +66,9 @@ sessionsRouter.post("/", passport.authenticate('login',{failureRedirect:'/faillo
   res.status(201).json({
     status: "success",
     payload: req.session["user"],
+    message: "Login successful"
   });
 })
-
-// @ts-ignore
-// sessionsRouter.get("/faillogin", (req, res) => {
-//   res.send({error:"login failed"})
-// });
 
 sessionsRouter.delete("/current", async (req, res) => {
   // @ts-ignore

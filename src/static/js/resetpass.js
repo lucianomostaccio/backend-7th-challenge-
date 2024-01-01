@@ -11,7 +11,7 @@ resetPassForm?.addEventListener("submit", async (event) => {
 
   if (response.status === 200) {
     const session = await response.json();
-    alert(JSON.stringify(session));
+    alert(session.message)
     window.location.href = "/login";
   } else {
     const error = await response.json();

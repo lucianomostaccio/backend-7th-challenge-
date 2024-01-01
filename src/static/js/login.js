@@ -11,10 +11,13 @@ formLogin?.addEventListener("submit", async (event) => {
 
   if (response.status === 201) {
     const session = await response.json();
-    alert(JSON.stringify(session));
+    // alert(JSON.stringify(session)); will show the whole session object, including payload
+    alert(session.message); // will show only the message
     window.location.href = "/products";
+  } else if (response.status === 401) {
+    alert("Invalid credentials");
   } else {
-    const error = await response.json();
-    alert(error.message);
+    const error = await response.text();
+    alert(`Error: ${error}`);
   }
 });

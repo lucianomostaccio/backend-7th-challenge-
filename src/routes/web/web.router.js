@@ -65,14 +65,3 @@ webRouter.get('/resetpass', (req, res) => {
     res.redirect('/products');
   }
 });
-
-
-// webRouter.get('/faillogin', (req, res) => {
-//   // Only show the fail login view if the user is not logged in
-//   if (!req.session['user']) {
-//     res.render('faillogin.handlebars', { pageTitle: 'Login failed' });
-//   } else {
-//     // Redirect the user to the products view if already logged in
-//     res.redirect('/products');
-//   }
-// });

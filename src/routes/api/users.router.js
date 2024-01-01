@@ -16,7 +16,7 @@ usersRouter.post("/", async (req, res) => {
       payload: user.toObject(),
     });
   } catch (error) {
-    res.status(400).json({ status: "error", message: error.message });
+    res.status(400).json({ status: "error", message: "invalid credentials" });
   }
 });
 
@@ -36,7 +36,7 @@ usersRouter.put("/", async function (req, res) {
         .json({ status: "error", message: "user not found" });
     }
 
-    res.json({ status: "success", payload: actualizado }); //200 status code is by default, not needed to be specified
+    res.json({ status: "success", payload: actualizado, message:"password updated" }); //200 status code is by default, not needed to be specified
   } catch (error) {
     res.status(400).json({ status: "error", message: error.message });
   }
