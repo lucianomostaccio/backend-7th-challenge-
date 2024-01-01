@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import { sesionesRouter } from './sesiones.router.js'
-import { usuariosRouter } from './usuarios.router.js'
+import { Router } from "express";
+import { sessionsRouter } from "./sessions.router.js";
+import { usersRouter } from "./users.router.js";
 
-export const apiRouter = Router()
+export const apiRouter = Router();
 
-apiRouter.use('/sesiones', sesionesRouter)
-apiRouter.use('/usuarios', usuariosRouter)
+apiRouter.use("/sessions", sessionsRouter);
+apiRouter.use("/users", usersRouter);

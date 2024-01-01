@@ -1,68 +1,78 @@
 import { Router } from 'express'
-import { onlyLogueadosWeb } from '../../middlewares/autorizacion.js'
+import { onlyLoggedInWeb } from '../../middlewares/authorization.js'
 
 export const webRouter = Router()
 
 webRouter.get('/', (req, res) => {
   if (req.session['user']) {
-    // Si el usuario está logueado, redirige a /profile
+    // If the user is logged in, redirect to /profile
     res.redirect('/profile');
   } else {
-    // Si el usuario no está logueado, redirige a /login
+    // If the user is not logged in, redirect to /login
     res.redirect('/login');
   }
 });
 
 webRouter.get('/register', (req, res) => {
-  // Solo mostrar la vista de registro si el usuario no está logueado
+  // Only show the registration view if the user is not logged in
   if (!req.session['user']) {
-    res.render('register.handlebars', { pageTitle: 'Registro' });
+    res.render('register.handlebars', { pageTitle: 'Register' });
   } else {
-    // Redirigir al usuario a la vista de productos si ya está logueado
+    // Redirect the user to the products view if already logged in
     res.redirect('/products');
   }
 });
 
-
 webRouter.get('/login', (req, res) => {
-  // Solo mostrar la vista de login si el usuario no está logueado
+  // Only show the login view if the user is not logged in
   if (!req.session['user']) {
     res.render('login.handlebars', { pageTitle: 'Login' });
   } else {
-    // Redirigir al usuario a la vista de productos si ya está logueado
+    // Redirect the user to the products view if already logged in
     res.redirect('/products');
   }
 });
 
-webRouter.get('/profile', onlyLogueadosWeb, (req, res) => {
+webRouter.get('/profile', onlyLoggedInWeb, (req, res) => {
   res.render('profile.handlebars', {
-    pageTitle: 'Perfil',
+    pageTitle: 'Profile',
     ...req.session['user']
   });
 });
 
-webRouter.get('/products', onlyLogueadosWeb, (req, res) => {
-  // cargar los productos directamente, o desde base de datos
+webRouter.get('/products', onlyLoggedInWeb, (req, res) => {
+  // Load products directly, or change it to use a database
   const products = [
-    { name: 'Producto 1', price: 19.99 },
-    { name: 'Producto 2', price: 29.99 },
-    { name: 'Producto 3', price: 39.99 },
+    { name: 'Product 1', price: 19.99 },
+    { name: 'Product 2', price: 29.99 },
+    { name: 'Product 3', price: 39.99 },
   ];
-  console.log('Usuario en sesión:', req.session['user']);
+  console.log('User in session:', req.session['user']);
   res.render('products.handlebars', {
-    mensajeBienvenida: 'Bienvenido',
+    welcomeMessage: 'Welcome',
     ...req.session['user'],
-    pageTitle: 'Productos',
+    pageTitle: 'Products',
     products,
   });
 });
 
 webRouter.get('/resetpass', (req, res) => {
-  // Solo mostrar la vista de registro si el usuario no está logueado
+  // Only show the reset password view if the user is not logged in
   if (!req.session['user']) {
-    res.render('resetpass.handlebars', { pageTitle: 'Reset password' });
+    res.render('resetpass.handlebars', { pageTitle: 'Reset Password' });
   } else {
-    // Redirigir al usuario a la vista de productos si ya está logueado
+    // Redirect the user to the products view if already logged in
+    res.redirect('/products');
+  }
+});
+
+
+webRouter.get('/faillogin', (req, res) => {
+  // Only show the fail login view if the user is not logged in
+  if (!req.session['user']) {
+    res.render('faillogin.handlebars', { pageTitle: 'Login failed' });
+  } else {
+    // Redirect the user to the products view if already logged in
     res.redirect('/products');
   }
 });

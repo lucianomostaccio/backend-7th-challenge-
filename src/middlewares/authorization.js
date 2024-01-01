@@ -1,16 +1,16 @@
-export function onlyLogueadosRest(req, res, next) {
+export function onlyLoggedInRest(req, res, next) {
   if (!req.session['user']) {
     return res
       .status(403)
       .json({
         status: 'error',
-        message: 'no tenes permiso para ver esto. solo para usuarios logueados'
+        message: 'You do not have permissions to see this. Only logged users are allowed.'
       })
   }
   next()
 }
 
-export function onlyLogueadosWeb(req, res, next) {
+export function onlyLoggedInWeb(req, res, next) {
   if (!req.session['user']) {
     return res.redirect('/login')
   }

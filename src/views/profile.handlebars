@@ -1,12 +1,12 @@
-<h1>Tu perfil (sin datos sensibles)</h1>
-<p>Nombre: {{nombre}}</p>
-<p>Apellido: {{apellido}}</p>
-<p>Correo electrónico: {{email}}</p>
-<p>Edad: {{edad}}</p>
-<p>Rol: {{rol}}</p>
+<h1>My Profile</h1>
+<p>Name: {{first_name}}</p>
+<p>Last_name: {{last_name}}</p>
+<p>Email: {{email}}</p>
+<p>Age: {{age}}</p>
+<p>Role: {{role}}</p>
 
-<form action="/api/sesiones/current" method="DELETE">
-  <button type="submit">Desloguearme</button>
+<form action="/api/sessions/current" method="DELETE">
+  <button type="submit">Log out</button>
 </form>
 
 <script src="/js/profile.js"></script>

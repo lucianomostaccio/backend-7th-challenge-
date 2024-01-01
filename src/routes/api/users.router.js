@@ -1,30 +1,30 @@
 //register
 import { Router } from "express";
-import { usuariosManager } from "../../dao/models/Usuario.js";
+import { usersManager } from "../../dao/models/User.js";
 import { createHash } from "../../utils/hashing.js";
 
-export const usuariosRouter = Router();
+export const usersRouter = Router();
 
-usuariosRouter.post("/", async (req, res) => {
+usersRouter.post("/", async (req, res) => {
   try {
     //password hashing:
     req.body.password = createHash(req.body.password);
 
-    const usuario = await usuariosManager.create(req.body);
+    const user = await usersManager.create(req.body);
     res.status(201).json({
       status: "success",
-      payload: usuario.toObject(),
+      payload: user.toObject(),
     });
   } catch (error) {
     res.status(400).json({ status: "error", message: error.message });
   }
 });
 
-usuariosRouter.put("/", async function (req, res) {
+usersRouter.put("/", async function (req, res) {
   try {
     req.body.password = createHash(req.body.password);
 
-    const actualizado = await usuariosManager.updateOne(
+    const actualizado = await usersManager.updateOne(
       { email: req.body.email },
       { $set: { password: req.body.password } },
       { new: true }
@@ -33,7 +33,7 @@ usuariosRouter.put("/", async function (req, res) {
     if (!actualizado) {
       return res
         .status(404)
-        .json({ status: "error", message: "usuario no encontrado" });
+        .json({ status: "error", message: "user not found" });
     }
 
     res.json({ status: "success", payload: actualizado }); //200 status code is by default, not needed to be specified

@@ -1,22 +1,22 @@
-const formLogout = document.querySelector('form')
+const formLogout = document.querySelector("form");
 
-formLogout?.addEventListener('submit', async event => {
-  event.preventDefault()
-  alert('sesión cerrada correctamente');
+formLogout?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  alert("session closed successfully");
   try {
-    const response = await fetch('/api/sesiones/current', {
-      method: 'DELETE'
+    const response = await fetch("/api/sessions/current", {
+      method: "DELETE",
     });
 
-    if (response.status === 204){
-      // La sesión se cerró correctamente, redirige a la página de login
-      window.location.href = '/login';
+    if (response.status === 204) {
+      // session closed successfully, redirect to login
+      window.location.href = "/login";
     } else {
-      // otros casos, si es necesario
+      // in case of errors:
       const error = await response.json();
       alert(error.message);
     }
   } catch (error) {
-    console.error('Error al cerrar sesión:', error);
+    console.error("Error closing the session:", error);
   }
 });

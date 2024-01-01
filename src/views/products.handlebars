@@ -1,16 +1,14 @@
 <!-- products.handlebars -->
 
-<p>Nombre: {{nombre}}</p>
-<p>Apellido: {{apellido}}</p>
-<p>Correo electrónico: {{email}}</p>
-<p>Rol: {{rol}}</p>
+<p>First name: {{first_name}}</p>
+<p>Last name: {{last_name}}</p>
+<p>Email: {{email}}</p>
+<p>Role: {{role}}</p>
 
-<h1>Productos</h1>
+<h1>Products</h1>
 
 <ul>
     {{#each products}}
         <li>{{name}} - {{price}}</li>
     {{/each}}
 </ul>
-
-<script src="/js/products.js"></script>
