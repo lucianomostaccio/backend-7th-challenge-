@@ -5,14 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/globalStyles.css"> 
+  <link rel="stylesheet" href="/css/{{style}}">  {{!-- we use dynamic style to later indicate the style file in web(views).router for each page --}}
   <title>{{pageTitle}}</title>
 </head>
 
 <body>
-  {{>navBar}}
-  <h1>{{welcomeMessage}}</h1>
-  {{{body}}}
+  <header>
+    {{>navBar}}
+  </header>
+  <main>
+    <h1 id="welcomeMessage">{{welcomeMessage}}</h1>
+    {{{body}}}
+  </main>
+  <footer>
+    {{>footer}} {{!-- footer partial dynamic import --}}
+  </footer>
 </body>
 
 </html>

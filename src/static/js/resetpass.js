@@ -1,20 +1,22 @@
-const resetPassForm = document.querySelector("form");
+const formResetPwd = document.querySelector('form')
 
-resetPassForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const response = await fetch("/api/users", {
-    method: "PUT",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+formResetPwd?.addEventListener('submit', async event => {
+  event.preventDefault()
+
+  const response = await fetch('/api/users/resetpass', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
     // @ts-ignore
-    body: new URLSearchParams(new FormData(resetPassForm)), //codes and extract passform from html form
-  });
+    body: new URLSearchParams(new FormData(formResetPwd))
+  })
 
   if (response.status === 200) {
-    const session = await response.json();
-    alert(session.message)
-    window.location.href = "/login";
+    alert('Password updated successfully')
+    window.location.href = '/login'
   } else {
-    const error = await response.json();
-    alert(error.message);
+    const error = await response.json()
+    alert(error.message)
   }
-});
+})

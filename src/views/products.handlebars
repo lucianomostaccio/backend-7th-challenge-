@@ -1,14 +1,19 @@
 <!-- products.handlebars -->
 
-<p>First name: {{first_name}}</p>
-<p>Last name: {{last_name}}</p>
-<p>Email: {{email}}</p>
-<p>Role: {{role}}</p>
+<section class="profileSection">
+    <ul class="userProfile">
+        <li class="profileItem">First name: {{first_name}}</li>
+        <li class="profileItem">Last name: {{last_name}}</li>
+        <li class="profileItem">Email: {{email}}</li>
+        <li class="profileItem">Age: {{age}}</li>
+        <li class="profileItem">Role: {{role}}</li>
+    </ul>
+</section>
 
-<h1>Products</h1>
+<h1 class="pageTitle">Products</h1>
 
-<ul>
-    {{#each products}}
-        <li>{{name}} - {{price}}</li>
-    {{/each}}
+<ul class="productList">
+  {{#each products}}
+    <li class="productTitle">{{name}} - {{price}}</li>
+  {{/each}}
 </ul>

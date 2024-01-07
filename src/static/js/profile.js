@@ -1,4 +1,4 @@
-const formLogout = document.querySelector("form");
+const formLogout = document.querySelector("#form-logout");
 
 formLogout?.addEventListener("submit", async (event) => {
   event.preventDefault();

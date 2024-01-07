@@ -2,6 +2,7 @@
 import { Router } from "express";
 import { ADMIN_EMAIL, ADMIN_PASSWORD } from "../../config/config.js";
 import passport from "passport";
+import { onlyLoggedInRest } from "../../middlewares/authorization.js";
 // import { usersManager } from "../../dao/models/User.js";
 // import { isValidPassword } from "../../utils/hashing.js";
 
@@ -78,6 +79,10 @@ sessionsRouter.post("/", passport.authenticate('login'), async (req, res) => {
     payload: req.session["user"],
     message: "Login successful"
   });
+})
+
+sessionsRouter.get('/current', onlyLoggedInRest, (req, res) => {
+  res.json(req.user)
 })
 
 sessionsRouter.delete("/current", async (req, res) => {
