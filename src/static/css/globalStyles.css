@@ -89,9 +89,38 @@ p {
   background-color: #c82333;
 }
 
+.greenButton{
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 10vw;
+}
+
+.greenButton:hover {
+  background-color: #218838;
+}
+
+#greenButtonGithub{
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#greenButtonGithub:hover {
+  background-color: #218838;
+}
+
 .formButton{
   display: flex;
   justify-content: center;
+}
+
+#loginForm{
+  margin-bottom: 1rem;
 }
 
 .form-group {
@@ -106,6 +135,13 @@ label {
 .required {
   color: red;
   margin-left: 5px;
+}
+
+input{
+  width: 30vw;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 footer {
