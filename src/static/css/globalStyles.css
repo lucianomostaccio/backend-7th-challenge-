@@ -68,13 +68,20 @@ p {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: center;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
   width: 100%;
 }
 
 .productTitle, .profileItem {
   padding: 0.5rem;
+}
+
+#login-title{
+  text-align: left;
+  margin: 0;
+  padding-left: 0;
 }
 
 .redButton {
@@ -123,6 +130,10 @@ p {
   margin-bottom: 1rem;
 }
 
+#register-form{
+  margin-top: 1rem;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -142,6 +153,14 @@ input{
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+#emailNotEdit {
+  color: red;
+}
+
+#products-edit{
+  align-content: flex-start;
 }
 
 footer {

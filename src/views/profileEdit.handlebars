@@ -2,7 +2,7 @@
 <section>
   <article class="profileSection">
     <h1>current profile</h1>
-    <ul class="userProfile">
+    <ul class="userProfile" id="products-edit">
       <li class="profileItem">First name: {{first_name}}</li>
       {{! <button></button> }}
       <li class="profileItem">Last name: {{last_name}}</li>
@@ -33,7 +33,7 @@
         /><br />
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Email <span><small id="emailNotEdit"> *You can't edit your email*</small></span></label>
         <input id="inputEmail" readonly /><br />
       </div>
       <div class="form-group">
@@ -46,7 +46,7 @@
           min="0" max="99"
         /><br />
       </div>
-      <button type="submit">Save your changes</button>
+      <button class="greenButton" type="submit">Save your changes</button>
     </form>
   </article>
 
