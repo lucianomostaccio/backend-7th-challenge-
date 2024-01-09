@@ -159,6 +159,10 @@ input{
   color: red;
 }
 
+#inputEmail{
+  cursor: not-allowed;
+}
+
 #products-edit{
   align-content: flex-start;
 }
